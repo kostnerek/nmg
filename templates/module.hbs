@@ -1,0 +1,16 @@
+import { Module } from '@nestjs/common';
+import { {{toUpperCase moduleName}}Service } from './{{moduleName}}.service';
+import { {{toUpperCase moduleName}}Repository } from './{{moduleName}}.repository';
+import { {{toUpperCase moduleName}}, {{toUpperCase moduleName}}Schema } from './schemas/{{moduleName}}.schema';
+import { MongooseModule } from '@nestjs/mongoose';
+import { {{toUpperCase moduleName}}Resolver } from './{{moduleName}}.resolver';
+
+@Module({
+imports: [
+    MongooseModule.forFeature([{ name: {{toUpperCase moduleName}}.name, schema: {{toUpperCase moduleName}}Schema }]),
+    ],
+    providers: [{{toUpperCase moduleName}}Service, {{toUpperCase moduleName}}Repository, {{toUpperCase
+    moduleName}}Resolver],
+    exports: [{{toUpperCase moduleName}}Service],
+})
+export class {{toUpperCase moduleName}}Module {}

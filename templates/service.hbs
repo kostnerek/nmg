@@ -1,0 +1,26 @@
+import { Injectable } from '@nestjs/common';
+import { {{toUpperCase moduleName}}, {{toUpperCase moduleName}}Document } from './schemas/{{moduleName}}.schema';
+import { {{toUpperCase moduleName}}Repository } from './{{moduleName}}.repository';
+import { {{toUpperCase moduleName}}NotFoundError } from './errors/{{moduleName}}-not-found.error';
+
+
+@Injectable()
+export class {{toUpperCase moduleName}}Service {
+  constructor(private readonly repository: {{toUpperCase moduleName}}Repository) {}
+
+  async create(input: Partial<{{toUpperCase moduleName}}Document>): Promise<{{toUpperCase moduleName}}> {
+    return this.repository.create(input);
+  }
+
+  async findById(id: string): Promise<{{toUpperCase moduleName}}> {
+    return await this.repository.findOneById(id);
+  }
+
+  async getById(id: string): Promise<{{toUpperCase moduleName}}> {
+    const {{moduleName}} = await this.findById(id);
+    if(!moduleName) {
+      throw new {{toUpperCase moduleName}}NotFoundError();
+    }
+    return {{moduleName}};
+  }
+}

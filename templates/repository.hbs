@@ -1,0 +1,19 @@
+import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { {{toUpperCase moduleName}}, {{toUpperCase moduleName}}Document } from './schemas/{{moduleName}}.schema';
+
+@Injectable()
+export class {{toUpperCase moduleName}}Repository {
+  constructor(
+    @InjectModel({{toUpperCase moduleName}}.name) private readonly {{moduleName}}Model: Model<{{toUpperCase moduleName}}Document>,
+  ) {}
+
+  async create(input: Partial<{{toUpperCase moduleName}}Document>): Promise<{{toUpperCase moduleName}}> {
+    return this.{{moduleName}}Model.create(input);
+  }
+
+  async findOneById(id: string): Promise<{{toUpperCase moduleName}} | null> {
+    return this.{{moduleName}}Model.findById(id);
+  }
+}

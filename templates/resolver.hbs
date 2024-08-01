@@ -1,0 +1,23 @@
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { {{toUpperCase moduleName}}Service } from './{{moduleName}}.service';
+import { {{toUpperCase moduleName}}Model } from './models/{{moduleName}}.model';
+import { INPUT_KEY } from 'src/common/common.constraints';
+import { {{toUpperCase moduleName}}Input } from './inputs/{{moduleName}}.input';
+import { Public } from 'src/common/decorators/public.decorator';
+
+@Resolver()
+export class {{toUpperCase moduleName}}Resolver {
+  constructor(private readonly {{moduleName}}Service: {{toUpperCase moduleName}}Service) {}
+
+  @Public()
+  @Query(() => {{toUpperCase moduleName}}Model, { name: '{{moduleName}}s' })
+  async get{{toUpperCase moduleName}}(@Args(INPUT_KEY) input: {{toUpperCase moduleName}}Input) {
+    return this.{{moduleName}}Service.findById(input.id);
+  }
+
+  @Public()
+  @Mutation(() => {{toUpperCase moduleName}}Model, { name: '{{moduleName}}' })
+  async create{{toUpperCase moduleName}}(@Args(INPUT_KEY) input: {{toUpperCase moduleName}}Input) {
+    return this.{{moduleName}}Service.create(input);
+  }
+}
