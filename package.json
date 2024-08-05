@@ -1,15 +1,13 @@
 {
   "name": "nestjs-module-generator",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "bin.js",
   "repository": "git@github.com:kostnerek/nestjs-module-generator.git",
   "author": "Filip Kostecki <filip.kostecki00@gmail.com>",
   "license": "MIT",
-  "bin": {
-    "create-module": "./index.js"
-  },
+  "bin": "./bin.js",
   "scripts": {
-    "create-module": "node index.js"
+    "create-module": "node bin.js"
   },
   "dependencies": {
     "commander": "^12.1.0",

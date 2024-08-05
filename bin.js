@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fs = require('node:fs');
 const path = require('node:path');
 const { program } = require('commander');
@@ -20,6 +21,8 @@ const normalizeString = (sourceStr) => {
   return resultStr;
 }
 
+console.log("This module requires this dependencies: \n- @nestjs/graphql\n- @nestjs/mongoose\n- @nestjs/common\n- mongoose\n- class-validator")
+
 
 program
   .option('-n, --name <name>', 'Name of the module')
@@ -29,15 +32,17 @@ program
 );
 program.parse(process.argv);
 const options = program.opts();
+if(options.name === undefined) {
+  throw new Error('Name of the module is required')
+}
 const moduleName = options.name.toLowerCase();
 
-/* 
 
-  errorName - MODULE_NAME
-  className - ModuleName
-  variables - moduleName
-  pathName  - module-name
-*/
+//  errorName - MODULE_NAME
+//  className - ModuleName
+//  variables - moduleName
+//  pathName  - module-name
+
 
 const errorName = moduleName.replace("-", "_").toUpperCase()
 const variableName = normalizeString(moduleName)
@@ -74,6 +79,7 @@ if (fs.existsSync(folderNames.rootModulePath)) {
 for (const folder in folderNames) {
   fs.mkdirSync(folderNames[folder], { recursive: true });
 }
+
 
 for(const file in fileNames) {
   const { path: filePath, template } = fileNames[file];
