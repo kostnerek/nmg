@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { {{toUpperCase moduleName}}, {{toUpperCase moduleName}}Document } from './schemas/{{moduleName}}.schema';
-import { {{toUpperCase moduleName}}Repository } from './{{moduleName}}.repository';
-import { {{toUpperCase moduleName}}NotFoundError } from './errors/{{moduleName}}-not-found.error';
+import { {{className}}, {{className}}Document } from './schemas/{{pathName}}.schema';
+import { {{className}}Repository } from './{{pathName}}.repository';
+import { {{className}}NotFoundError } from './errors/{{pathName}}-not-found.error';
 
 
 @Injectable()
-export class {{toUpperCase moduleName}}Service {
-  constructor(private readonly repository: {{toUpperCase moduleName}}Repository) {}
+export class {{className}}Service {
+  constructor(private readonly repository: {{className}}Repository) {}
 
-  async create(input: Partial<{{toUpperCase moduleName}}Document>): Promise<{{toUpperCase moduleName}}> {
+  async create(input: Partial<{{className}}Document>): Promise<{{className}}> {
     return this.repository.create(input);
   }
 
-  async findById(id: string): Promise<{{toUpperCase moduleName}}> {
+  async findById(id: string): Promise<{{className}}> {
     return await this.repository.findOneById(id);
   }
 
-  async getById(id: string): Promise<{{toUpperCase moduleName}}> {
-    const {{moduleName}} = await this.findById(id);
+  async getById(id: string): Promise<{{className}}> {
+    const {{variableName}} = await this.findById(id);
     if(!moduleName) {
-      throw new {{toUpperCase moduleName}}NotFoundError();
+      throw new {{className}}NotFoundError();
     }
-    return {{moduleName}};
+    return {{variableName}};
   }
 }

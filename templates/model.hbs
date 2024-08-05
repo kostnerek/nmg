@@ -1,14 +1,14 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { {{toUpperCase moduleName}}Document } from '../schemas/{{moduleName}}.schema';
+import { {{className}}Document } from '../schemas/{{pathName}}.schema';
 
-@ObjectType('{{toUpperCase moduleName}}')
-export class {{toUpperCase moduleName}}Model {
+@ObjectType('{{class}}')
+export class {{className}}Model {
   @Field(()=>String)
   id: string;
 
-  constructor(input: {{toUpperCase moduleName}}Document | {{toUpperCase moduleName}}Model) {
+  constructor(input: {{className}}Document | {{className}}Model) {
     Object.assign(this, {
-      ...((input as any)._doc ? (input as {{toUpperCase moduleName}}Document).toObject({ virtuals: true }) : input),
+      ...((input as any)._doc ? (input as {{className}}Document).toObject({ virtuals: true }) : input),
     });
   }
 }

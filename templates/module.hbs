@@ -1,16 +1,15 @@
 import { Module } from '@nestjs/common';
-import { {{toUpperCase moduleName}}Service } from './{{moduleName}}.service';
-import { {{toUpperCase moduleName}}Repository } from './{{moduleName}}.repository';
-import { {{toUpperCase moduleName}}, {{toUpperCase moduleName}}Schema } from './schemas/{{moduleName}}.schema';
+import { {{className}}Service } from './{{pathName}}.service';
+import { {{className}}Repository } from './{{pathName}}.repository';
+import { {{className}}, {{className}}Schema } from './schemas/{{pathName}}.schema';
 import { MongooseModule } from '@nestjs/mongoose';
-import { {{toUpperCase moduleName}}Resolver } from './{{moduleName}}.resolver';
+import { {{className}}Resolver } from './{{pathName}}.resolver';
 
 @Module({
 imports: [
-    MongooseModule.forFeature([{ name: {{toUpperCase moduleName}}.name, schema: {{toUpperCase moduleName}}Schema }]),
+    MongooseModule.forFeature([{ name: {{className}}.name, schema: {{className}}Schema }]),
     ],
-    providers: [{{toUpperCase moduleName}}Service, {{toUpperCase moduleName}}Repository, {{toUpperCase
-    moduleName}}Resolver],
-    exports: [{{toUpperCase moduleName}}Service],
+    providers: [{{className}}Service, {{className}}Repository, {{className}}Resolver],
+    exports: [{{className}}Service],
 })
-export class {{toUpperCase moduleName}}Module {}
+export class {{className}}Module {}

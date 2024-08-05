@@ -1,23 +1,23 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { {{toUpperCase moduleName}}Service } from './{{moduleName}}.service';
-import { {{toUpperCase moduleName}}Model } from './models/{{moduleName}}.model';
+import { {{className}}Service } from './{{pathName}}.service';
+import { {{className}}Model } from './models/{{pathName}}.model';
+import { {{className}}Input } from './inputs/{{pathName}}.input';
 import { INPUT_KEY } from 'src/common/common.constraints';
-import { {{toUpperCase moduleName}}Input } from './inputs/{{moduleName}}.input';
 import { Public } from 'src/common/decorators/public.decorator';
 
 @Resolver()
-export class {{toUpperCase moduleName}}Resolver {
-  constructor(private readonly {{moduleName}}Service: {{toUpperCase moduleName}}Service) {}
+export class {{className}}Resolver {
+  constructor(private readonly {{variableName}}Service: {{className}}Service) {}
 
   @Public()
-  @Query(() => {{toUpperCase moduleName}}Model, { name: '{{moduleName}}s' })
-  async get{{toUpperCase moduleName}}(@Args(INPUT_KEY) input: {{toUpperCase moduleName}}Input) {
-    return this.{{moduleName}}Service.findById(input.id);
+  @Query(() => {{className}}Model, { name: '{{variableName}}s' })
+  async get{{className}}(@Args(INPUT_KEY) input: {{className}}Input) {
+    return this.{{variableName}}Service.findById(input.id);
   }
 
   @Public()
-  @Mutation(() => {{toUpperCase moduleName}}Model, { name: '{{moduleName}}' })
-  async create{{toUpperCase moduleName}}(@Args(INPUT_KEY) input: {{toUpperCase moduleName}}Input) {
-    return this.{{moduleName}}Service.create(input);
+  @Mutation(() => {{className}}Model, { name: '{{variableName}}' })
+  async create{{className}}(@Args(INPUT_KEY) input: {{className}}Input) {
+    return this.{{variableName}}Service.create(input);
   }
 }
