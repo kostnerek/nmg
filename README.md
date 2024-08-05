@@ -5,7 +5,9 @@ Custom module generator for applications using NestJS, mongoose and GraphQL.
 Use this generator to create a new module with a model, service, resolver and input type.
 
 It will create the following files:
-```bash npx nestjs-mg --name=test --rootDir=src```
+```bash 
+npx nestjs-mg --name=test --rootDir=src
+```
 ```bash
 src/
 └── test
