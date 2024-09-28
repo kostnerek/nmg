@@ -18,7 +18,7 @@ export class {{className}}Service {
 
   async getById(id: string): Promise<{{className}}> {
     const {{variableName}} = await this.findById(id);
-    if(!moduleName) {
+    if(!{{variableName}}) {
       throw new {{className}}NotFoundError();
     }
     return {{variableName}};
